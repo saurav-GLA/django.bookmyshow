@@ -16,20 +16,17 @@ import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY", "dev-key")
-
+SECRET_KEY = 'django-insecure-zq+e&m&1v)eeod^03%p)wvx7d0edhllt3c*bhc5a(by_q%u)ct'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+DEBUG = True
 
-
-ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['your-render-service.onrender.com']
 
 
 
@@ -54,10 +51,14 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 AUTH_USER_MODEL = 'auth.User'
 EMAIL_BACKEND='django.core.mail.backends.console.EmailBackend' 
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -91,9 +92,9 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-DATABASE_URL = "postgresql://django_bookmyseat_bysaurav_user:MC5kqOsQ0WuvcII2qSVRq82mUhgGCoAf@dpg-d1a8uah5pdvs73ajhko0-a.oregon-postgres.render.com/django_bookmyseat_bysaurav"
-DATABASES['default'] = dj_database_url.config(default=os.environ.get('DATABASE_URL'))
-
+DATABASES = {
+    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
+}
 #
 
 # Password validation
