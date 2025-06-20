@@ -3,13 +3,13 @@ services:
     name: bookmyshow
     env: python
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn bookmyshow.wsgi
+    startCommand: gunicorn bookmyshow.wsgi:application
     envVars:
       - key: DJANGO_SETTINGS_MODULE
         value: bookmyshow.settings
       - key: DATABASE_URL
-        value: postgresql://django_bookmyseat_bysaurav_user:MC5kqOsQ0WuvcII2qSVRq82mUhgGCoAf@dpg-d1a8uah5pdvs73ajhko0-a.oregon-postgres.render.com/django_bookmyseat_bysaurav )
+        value: postgresql://django_bookmyseat_bysaurav_user:MC5kqOsQ0WuvcII2qSVRq82mUhgGCoAf@dpg-d1a8uah5pdvs73ajhko0-a.oregon-postgres.render.com/django_bookmyseat_bysaurav
       - key: SECRET_KEY
-        value: (p_ez_a@g-yh05%ks#p!l=&w#%a@r=f05dwj$!vtaon*a9@9m!
+        value: "(p_ez_a@g-yh05%ks#p!l=&w#%a@r=f05dwj$!vtaon*a9@9m!"  
       - key: DEBUG
         value: False
